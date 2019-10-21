@@ -61,6 +61,7 @@ html, body {
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
 
   // language selector for mobile devices
   .lang-selector {
@@ -74,8 +75,10 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
+    max-width: 90%;
     margin-bottom: $logo-margin;
+    padding: 5%;
+    padding-bottom: 0;
   }
 
   &>.search {
@@ -344,16 +347,18 @@ html, body {
     clear:both;
   }
 
+  a {
+    color: $main-anchor;
+  }
+
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: 27px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    background-color: $main-bg;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -363,10 +368,9 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 19px;
-    margin-top: 4em;
+    font-size: 21px;
+    margin-top: 5em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
@@ -381,7 +385,7 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    font-size: 17px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
@@ -423,7 +427,7 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: lighten($main-bg,0%);
     }
 
     tr:nth-child(even)>td {

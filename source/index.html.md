@@ -2,9 +2,6 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
@@ -12,228 +9,145 @@ toc_footers:
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+This page contains the documentation for the <a href='https://midwaylondon.com'>MidWay London</a> API.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Welcome to the MidWay API. With this API, you can create MidWay events or use our algorithm to find the midpoint of up to 20 locations to enhance your own service.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Code examples can be viewed in the area to the right.
 
 # Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+> To authorise, use this code:
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `<API_Key>` with your API key and `<API_Token>` with your API token.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>&ltAPI_Key&gt</code> with your personal API key.
 </aside>
 
-# Kittens
+# MidWay Now
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+## Now
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
+This endpoint creates an event with MidWay Now, our event planning tool.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://www.midwaylondon.com/api/v1/now`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Description
+--------- | -----------
+form-TOTAL_FORMS | Number of locations (>= 2)
+form-INITIAL_FORMS | Should be 0 for a now event
+form-\<n\>-lat | latitude of location
+form-\<n\>-lng | longitude of location
+form-\<n\>-name | user-provided name for the location
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="notice">
+Replace <code>&ltn&gt</code> in the parameter name with the number of the location form (1, 2, ..., n)
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+## Resolve
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint submits a choice of venue for a given event.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://www.midwaylondon.com/api/v1/resolve`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+Event | The ID of the event to submit a venue for
+Venue | The ID of the venue to submit for the event
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
+## Suggestions
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
+This endpoint gets venue suggestions for a given event.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://www.midwaylondon.com/api/v1/suggestions`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
 
+## Details
+
+```javascript
+
+```
+
+This endpoint gets details about a given venue.
+
+### HTTP Request
+
+`GET https://www.midwaylondon.com/api/v1/details`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+
+## Login
+
+```javascript
+
+```
+
+This endpoint provides a way to login to a MidWay London account.
+
+### HTTP Request
+
+`GET https://www.midwaylondon.com/api/v1/login`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+
+## Events
+
+```javascript
+
+```
+
+This endpoint gets a list of all events for the logged in user.
+
+### HTTP Request
+
+`GET https://www.midwaylondon.com/api/v1/events`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
