@@ -3,6 +3,7 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
+  - python
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -23,17 +24,35 @@ Code examples can be viewed in the area to the right.
 
 # Authentication
 
+> To install, run the following in your terminal:
+
+```javascript
+  npm install midway-js
+```
+
+```python
+  pip install midwayPy
+```
+
 > To authorise, use this code:
 
 ```javascript
-  ...
+  import MidwayClient from 'midway-js';
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
+```
+
+```python
+  import MidwayClient from midwayPy
+
+  client = MidwayClient(<API_Key>, <API_Token>)
 ```
 
 > Make sure to replace `<API_Key>` with your API key and `<API_Token>` with your API token.
 
+Follow <a href="#">this link</a> to sign up for an API key.
 
+Install the MidWay Client for JavaScript or Python and include it in your source.
 
 <aside class="notice">
 You must replace <code>&ltAPI_Key&gt</code> with your personal API key.
@@ -93,7 +112,7 @@ Property | Type | Description
 ```javascript
   ...
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
 
   const body = {
     "form-TOTAL_FORMS": 2,
@@ -146,7 +165,7 @@ Property | Default
 ```javascript
   ...
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
 
   const body = {...};
   const event = client.CreateNowEvent(body);
@@ -172,7 +191,7 @@ Parameter | Description
 ```javascript
   ...
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
 
   const body = {...};
   const event = client.CreateNowEvent(body);
@@ -198,7 +217,7 @@ Parameter | Description
 ```javascript
   ...
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
 
   const body = {...};
   const event = client.CreateNowEvent(body);
@@ -225,7 +244,7 @@ Parameter | Description
 ```javascript
   ...
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
 
 ```
 
@@ -245,7 +264,7 @@ Parameter | Description
 ```javascript
   ...
 
-  client = new MidWayClient(<API_Key>, <API_Token>);
+  client = new MidwayClient(<API_Key>, <API_Token>);
 
 ```
 
