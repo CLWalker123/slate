@@ -15,7 +15,7 @@ search: true
 
 # Introduction
 
-This page contains the documentation for the <a href='https://midwaylondon.com'>MidWay London</a> API.
+This page contains the documentation for the <a href='https://www.midwaylondon.com'>MidWay London</a> API.
 
 With this API, you can create a MidWay event and use our algorithms to find the midpoint of up to 20 locations to enhance your service.
 
