@@ -114,18 +114,43 @@ Property | Type | Description
 
   client = new MidwayClient(<API_Key>, <API_Token>);
 
-  const body = {
-    "form-TOTAL_FORMS": 2,
-    "form-INITIAL_FORMS": 0,
-    "form-0-lat": 51.5347488,
-    "form-0-lng": -0.1245845,
-    "form-0-name": "Kings Cross",
-    "form-1-lat": 51.41833889999999,
-    "form-1-lng": -0.2206288,
-    "form-1-name": "Wimbledon",
-  }
+  // in this example we create an array of two PlaceDetails objects: Kings Cross and Wimbledon
+  const locations = [
+    {
+      id: 1,
+      name: "Kings Cross",
+      formatted_address: "",
+      place_id: "",
+      reference: "",
+      geometry: {
+        location: {
+          lat: 51.5347488,
+          lng: -0.1245845,
+        },
+        viewport: {
 
-  client.CreateNowEvent(body);
+        },
+      },
+    },
+    {
+      id: 2,
+      name: "Wimbledon",
+      formatted_address: "",
+      place_id: "",
+      reference: "",
+      geometry: {
+        location: {
+          lat: 51.41833889999999,
+          lng: -0.2206288,
+        },
+        viewport: {
+
+        },
+      },
+    },
+  ];
+
+  client.CreateNowEvent(locations);
 ```
 
 This endpoint creates an event with MidWay Now, our event planning tool.
@@ -134,7 +159,7 @@ This endpoint creates an event with MidWay Now, our event planning tool.
 
 `GET https://www.midwaylondon.com/api/v1/now`
 
-### Query Parameters
+### URL Parameters
 
 Parameter | Description
 --------- | -----------
@@ -149,6 +174,16 @@ Replace <code>&ltn&gt</code> in the parameter name with the number of the locati
 </aside>
 <aside class="warning">
 <code>form-TOTAL_FORMS</code> must be at least 2, and must equal the number of forms submitted
+</aside>
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`locations` | `PlaceDetails[]` | The starting locations for the event
+
+<aside class="warning">
+<code>locations</code> must be an array with length of at least 2
 </aside>
 
 ### Returns
@@ -167,8 +202,8 @@ Property | Default
 
   client = new MidwayClient(<API_Key>, <API_Token>);
 
-  const body = {...};
-  const event = client.CreateNowEvent(body);
+  const locations = [...];
+  const event = client.CreateNowEvent(locations);
 
   client.GetSuggestions(event.id);
 
@@ -180,7 +215,7 @@ This endpoint gets venue suggestions for a given event.
 
 `GET https://www.midwaylondon.com/api/v1/suggestions`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
@@ -193,8 +228,8 @@ Parameter | Description
 
   client = new MidwayClient(<API_Key>, <API_Token>);
 
-  const body = {...};
-  const event = client.CreateNowEvent(body);
+  const locations = [...];
+  const event = client.CreateNowEvent(locations);
   const venue = client.GetSuggestions(event.id).venues[0];
 
   client.GetDetails(venue);
@@ -206,7 +241,7 @@ This endpoint gets details about a given venue.
 
 `GET https://www.midwaylondon.com/api/v1/details`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
@@ -219,8 +254,8 @@ Parameter | Description
 
   client = new MidwayClient(<API_Key>, <API_Token>);
 
-  const body = {...};
-  const event = client.CreateNowEvent(body);
+  const locations = [...];
+  const event = client.CreateNowEvent(locations);
   const venue = client.GetSuggestions(event.id).venues[0];
 
   client.Resolve(event.id, venue.id);
@@ -232,7 +267,7 @@ This endpoint submits a choice of venue for a given event.
 
 `GET https://www.midwaylondon.com/api/v1/resolve`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
@@ -254,7 +289,7 @@ This endpoint provides a way to login to a MidWay London account.
 
 `GET https://www.midwaylondon.com/api/v1/login`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
@@ -274,7 +309,7 @@ This endpoint gets a list of all events for the logged in user.
 
 `GET https://www.midwaylondon.com/api/v1/events`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
