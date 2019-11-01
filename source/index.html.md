@@ -109,12 +109,14 @@ Property | Type | Description
 
 ## Now
 
+> In this example we create an array of two PlaceDetails objects: Kings Cross and Wimbledon
+
 ```javascript
   ...
 
   client = new MidwayClient(<API_Key>, <API_Token>);
 
-  // in this example we create an array of two PlaceDetails objects: Kings Cross and Wimbledon
+  // create array of PlaceDetails
   const locations = [
     {
       id: 1,
@@ -151,6 +153,11 @@ Property | Type | Description
   ];
 
   client.CreateNowEvent(locations);
+```
+> To use this event with other endpoints, assign it to a variable as a MidwayEvent:
+
+```javascript
+  const event = client.CreateNowEvent(locations) as MidwayEvent;
 ```
 
 This endpoint creates an event with MidWay Now, our event planning tool.
@@ -215,11 +222,16 @@ This endpoint gets venue suggestions for a given event.
 
 `GET https://www.midwaylondon.com/api/v1/suggestions`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
-`eventId` | Unique id of the event to get suggestions for
+`eventId` | Unique id of the event
 
 ## Details
 
@@ -241,11 +253,16 @@ This endpoint gets details about a given venue.
 
 `GET https://www.midwaylondon.com/api/v1/details`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
-`place_id` | Unique id of the venue to get details for
+`place_id` | Unique id of the venue
 
 ## Resolve
 
@@ -266,6 +283,11 @@ This endpoint submits a choice of venue for a given event.
 ### HTTP Request
 
 `GET https://www.midwaylondon.com/api/v1/resolve`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
 
 ### Query Parameters
 
@@ -289,6 +311,11 @@ This endpoint provides a way to login to a MidWay London account.
 
 `GET https://www.midwaylondon.com/api/v1/login`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+
 ### Query Parameters
 
 Parameter | Description
@@ -308,6 +335,11 @@ This endpoint gets a list of all events for the logged in user.
 ### HTTP Request
 
 `GET https://www.midwaylondon.com/api/v1/events`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
 
 ### Query Parameters
 
