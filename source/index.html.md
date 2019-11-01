@@ -3,7 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
-  - python
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -30,22 +29,12 @@ Code examples can be viewed in the area to the right.
   npm install midway-js
 ```
 
-```python
-  pip install midwayPy
-```
-
 > To authorise, use this code:
 
 ```javascript
   import MidwayClient from 'midway-js';
 
   client = new MidwayClient(<API_Key>, <API_Token>);
-```
-
-```python
-  import MidwayClient from midwayPy
-
-  client = MidwayClient(<API_Key>, <API_Token>)
 ```
 
 > Make sure to replace `<API_Key>` with your API key and `<API_Token>` with your API token.
